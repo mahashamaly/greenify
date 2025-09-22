@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:greenify/screens/registar.dart';
+import 'package:greenify/screens/login.dart';
 import 'package:greenify/shared/colors.dart';
 import 'package:greenify/shared/constant.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Registar extends StatelessWidget {
+  const Registar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,18 @@ class Login extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+
                 children: [
                   SizedBox(height: 64),
+
+                  TextField(
+                    keyboardType: TextInputType.text,
+                    obscureText: false,
+                    decoration: decorationTextField.copyWith(
+                      hintText: "Enter Your Name :",
+                    ),
+                  ),
+                  SizedBox(height: 33),
                   TextField(
                     keyboardType: TextInputType.emailAddress,
                     obscureText: false,
@@ -26,7 +36,7 @@ class Login extends StatelessWidget {
                       hintText: "Enter Your Email :",
                     ),
                   ),
-                  const SizedBox(height: 33),
+                  SizedBox(height: 33),
                   TextField(
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
@@ -34,7 +44,7 @@ class Login extends StatelessWidget {
                       hintText: "Enter Your password :",
                     ),
                   ),
-                 const SizedBox(height: 33),
+                  SizedBox(height: 33),
                   ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
@@ -47,26 +57,26 @@ class Login extends StatelessWidget {
                         ),
                       ),
                     ),
-                  
-                    child: Text("Sign in", style: TextStyle(fontSize: 19)),
+
+                    child: Text("Register", style: TextStyle(fontSize: 19)),
                   ),
-                 const SizedBox(height: 33),
+                  SizedBox(height: 33),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                      "Don't have an account?",
+                        " Already have an account?",
                         style: TextStyle(color: Colors.black, fontSize: 18),
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context)=>Registar()
-                          )
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => Login()),
                           );
                         },
                         child: Text(
-                          "sign up",
+                          "Sign In",
                           style: TextStyle(color: Colors.black, fontSize: 18),
                         ),
                       ),
