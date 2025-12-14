@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:greenify/models/item.dart';
+import 'package:greenify/provider/cart.dart';
+import 'package:greenify/shared/appbar.dart';
+import 'package:provider/provider.dart';
 
 class DetailsScreen extends StatefulWidget {
-   DetailsScreen({super.key});
+   DetailsScreen({super.key,required this.product});
+   Item product;
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
@@ -12,55 +17,23 @@ bool isshowMore=true;
 
   @override
   Widget build(BuildContext context) {
+       var provider=Provider.of<Cart>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
         actions: [
-          Row(
-            children: [
-              Stack(
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.add_shopping_cart),
-                  ),
-                  Positioned(
-                    bottom: 24,
-
-                    child: Container(
-                      padding: EdgeInsets.all(5),
-
-                      child: Text(
-                        '8',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(211, 164, 255, 193),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: Text("\$13"),
-              ),
-            ],
-          ),
+         productAndPrice(),
+          
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset('assets/img/w1.jpg'),
+            Image.asset(widget.product.Imagepath),
             SizedBox(height: 11),
         
-            Text("\$13.66", style: TextStyle(fontSize: 20)),
+            Text(widget.product.price.toString(), style: TextStyle(fontSize: 20)),
             SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
